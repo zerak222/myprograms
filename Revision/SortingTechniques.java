@@ -10,6 +10,9 @@ public class Main {
         System.out.println(Arrays.toString(insertionSort(A)));	
 		
 		System.out.println(Arrays.toString(mergeSort(A,0,A.length-1)));
+		int[] A2 = {5, 3, 2, 1, 4};
+		quickSort(A2,0,A.length-1);
+		System.out.println(Arrays.toString(A2));
         
     }	
 	public static int[] bubbleSort(int A[]){
@@ -76,5 +79,32 @@ public class Main {
 		}
 		return ans;
 	}
-
+	public static void quickSort(int A[],int low,int high){
+		if(low>=high){
+			return ;
+		}
+		int pivot = A[high];
+		int pi = partition(A,low,high,pivot);
+		quickSort(A,low,pi-1);
+		quickSort(A,pi+1,high);
+	}
+	
+	public static int partition(int A[],int low,int high,int pivot){
+		int i=low,j=low;
+		while(j<high){
+			if(A[j]>=pivot){
+				j++;
+			}
+			else{
+				int temp = A[i];
+				A[i]=A[j];
+				A[j]=temp;
+				i++;j++;
+			}
+		}
+		int temp = A[i];
+		A[i] = A[high];
+		A[high]=temp;
+		return i;
+	}
 }
