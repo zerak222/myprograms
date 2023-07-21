@@ -13,6 +13,7 @@ public void helper(int N, int ans[], int i){
 			System.out.print(val+" ");
 		}
 		System.out.println();
+		 return;
 	}
 	ans[i]=1; // put 1 at ith index
 	helper(N,ans,i+1);
