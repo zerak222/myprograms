@@ -66,7 +66,7 @@ Explanation 2:
 */
 
 public class Solution{
-		public int solve(int A[],int B){
+		public int solve1(int A[],int B){
 				Arrays.sort(A);
 				for(int i=0;i<A.length && B>0 && A[i]<0 ;i++){
 						A[i]=-A[i];
@@ -82,6 +82,23 @@ public class Solution{
 								minElement = Math.min(minElement,num);
 						}
 						sum = sum-2*minElement;
+				}
+				return sum;
+		}
+		public int solve(int A[],int B){
+				PriorityQueue<Integer> pq = new PriorityQueue();
+				for(int i=0;i<A.length;i++){
+					pq.add(A[i]);
+				}
+				// change the sign 
+				for(int i=0;i<B;i++){
+					int ele = pq.poll();
+					pq.add(-ele);
+				}
+				// sum
+				int sum = 0;
+				while(!pq.isEmpty()){
+					sum = sum+pq.poll();
 				}
 				return sum;
 		}
